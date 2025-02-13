@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://dykp3k6et2dri"]
+
+[ext_resource type="FontFile" uid="uid://we4i6ca8lirq" path="res://Tvcd-d92gK.ttf" id="1_1bexh"]
+[ext_resource type="Script" path="res://time_buffer.gd" id="1_5ci03"]
+[ext_resource type="PackedScene" uid="uid://cswpmrvohkcwh" path="res://task.tscn" id="2_x5277"]
+[ext_resource type="Texture2D" uid="uid://bkggb0olndtny" path="res://ahcd96qodmspspc3cacrk7ua12.png" id="3_dlo6f"]
+[ext_resource type="Texture2D" uid="uid://dqsf4kmy8wt34" path="res://trash-2-xxl.png" id="3_mwwue"]
+
+[node name="timeBuffer" type="VBoxContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.177
+offset_right = 1.0
+offset_bottom = -0.420013
+size_flags_vertical = 0
+theme_override_constants/separation = 24
+script = ExtResource("1_5ci03")
+
+[node name="title" type="LineEdit" parent="."]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1bexh")
+theme_override_font_sizes/font_size = 53
+placeholder_text = "Enter Time Zone"
+
+[node name="delete" type="TextureButton" parent="title"]
+layout_mode = 2
+offset_left = 1027.0
+offset_top = 9.0
+offset_right = 1069.0
+offset_bottom = 53.0
+texture_normal = ExtResource("3_mwwue")
+texture_pressed = ExtResource("3_mwwue")
+texture_hover = ExtResource("3_mwwue")
+texture_disabled = ExtResource("3_mwwue")
+texture_focused = ExtResource("3_mwwue")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="task" parent="." instance=ExtResource("2_x5277")]
+layout_mode = 2
+
+[node name="addTask" type="LineEdit" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1bexh")
+theme_override_font_sizes/font_size = 46
+alignment = 1
+
+[node name="plus" type="TextureRect" parent="addTask"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_dlo6f")
+expand_mode = 1
+
+[connection signal="pressed" from="title/delete" to="." method="_on_delete_pressed"]
+[connection signal="text_change_rejected" from="addTask" to="." method="_on_add_task_text_change_rejected"]
+[connection signal="text_changed" from="addTask" to="." method="_on_add_task_text_changed"]
+[connection signal="text_submitted" from="addTask" to="." method="_on_add_task_text_submitted"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dupvicbte41il"]
+
+[ext_resource type="Script" path="res://time_buffer.gd" id="1_0fxmv"]
+[ext_resource type="PackedScene" uid="uid://dykp3k6et2dri" path="res://time_buffer_real.tscn" id="2_l3l7e"]
+
+[node name="timurBuffer" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_right = 0.517
+anchor_bottom = 0.146
+offset_left = -1.0
+offset_right = -17.36
+offset_bottom = -1.16003
+grow_horizontal = 2
+size_flags_horizontal = 4
+script = ExtResource("1_0fxmv")
+
+[node name="timeBuffer" parent="." instance=ExtResource("2_l3l7e")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_bottom = 0.0
